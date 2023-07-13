@@ -1,6 +1,9 @@
+require("@nomicfoundation/hardhat-toolbox");
 const { mnemonicToSeed, mnemonicToEntropy } = require("ethers/lib/utils");
 
-require("@nomicfoundation/hardhat-toolbox");
+// Load environment variables
+require('dotenv').config();
+
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -22,13 +25,13 @@ module.exports = {
       gas: 6721975,
     },
     goerli: {
-      url: "https://goerli.infura.io/v3/6b492347014d46b1be2fc125723856e1",
-      accounts:{
-        mnemonic: "ticket duck balcony afford silent stairs shift common actual edit earth file"
+      url: process.env.INFURA_URL,
+      accounts: {
+        mnemonic: process.env.ACCOUNT_PHRASE
       }
     }
   },
   etherscan: {
-    apiKey: "81AMC46XCF7YS2C7QJSMA82A31KZRZZYPQ"
+    apiKey: process.env.ETHERSCAN_API_KEY
   }
 };
